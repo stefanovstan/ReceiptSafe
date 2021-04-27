@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log In</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<br>
+  	<br>
+  	<form [formGroup]="loginForm">
+  		<ion-item>
+  			<ion-label position="floating">Email</ion-label>
+  			<ion-input type="email" formControlName="email" required></ion-input>
+  		</ion-item>
+  		<ion-item>
+  			<ion-label position="floating">Password</ion-label>
+  			<ion-input type="password" formControlName="password" required></ion-input>
+  		</ion-item>  		
+  	</form>
+  	<br>
+	<br>
+	<ion-button expand="block" (click)="login()" [disabled]="!loginForm.valid">Login</ion-button>
+  	<br>
+	<ion-button expand="block" [routerDirection]="'forward'" [routerLink]="['/signup']">Sign Up</ion-button>
+    <br>
+    <p style="text-align: center; font-weight: bold;">OR</p>
+    <br>
+    <ion-button style="border: 2px solid #3880ff; border-radius: 10px; color: black;" color="primary-contrast" expand="block" (click)="googleLogin()"><img width="35px" height="36px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjzC2JyZDZ_RaWf0qp11K0lcvB6b6kYNMoqtZAQ9hiPZ4cTIOB" alt=""></ion-button>
+</ion-content>
+
+<ion-footer>
+	<ion-button expand="block" [routerDirection]="'forward'" [routerLink]="['/email-verification']">Forgot Password?</ion-button>
+	<br>
+</ion-footer>

@@ -1,0 +1,10 @@
+{
+  "name": "ReceiptSafe",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

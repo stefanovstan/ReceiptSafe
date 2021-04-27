@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Scanner
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Scanner</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="new_receipt_form" (submit)="addReceipt(new_receipt_form.value)" *ngIf="!hideForm">
+    <ion-img id="receipt_image" [src]=""></ion-img>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Store Name</ion-label>
+      <ion-input type="text" formControlName="store_name" required></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label color="primary" position="floating">Date</ion-label>
+      <ion-input type="text" formControlName="date" required></ion-input>
+    </ion-item> -->
+    <ion-item>
+      <ion-label color="primary" position="floating">Date</ion-label>
+      <ion-datetime id="date-input" value="" min="1950" max="2021"
+        [dayShortNames]="customDayShortNames"
+        displayFormat="DDD. MMM DD, YYYY"
+        monthShortNames="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec" formControlName="date" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Transcribed Receipt</ion-label>
+      <ion-textarea id="t_receipt" formControlName="transcribed_receipt" [(ngModel)]="ocrResult" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" position="floating">Total Cost</ion-label>
+      <ion-input type="text" formControlName="total_cost" required></ion-input>
+    </ion-item>
+    <br>
+    <br>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_receipt_form.valid">Add Receipt</ion-button>
+  </form>
+  <br>
+  <br>
+</ion-content>

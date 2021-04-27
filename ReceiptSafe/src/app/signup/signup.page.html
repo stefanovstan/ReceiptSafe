@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign Up</ion-title>
+	 <ion-buttons slot="start">
+	  <ion-back-button></ion-back-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<br>
+	<br>
+
+	<form [formGroup]="signupForm">
+		<ion-item>
+			<ion-label position="floating">What's your email?</ion-label>
+			<ion-input type="email" formControlName="email" required></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating">Choose a password</ion-label>
+			<ion-input type="password" formControlName="password" required></ion-input>
+		</ion-item>
+    <br>
+		<br>
+		<ion-button expand="block" (click)="signup()" [disabled]="!signupForm.valid">Sign Up</ion-button>
+	</form>
+
+	<br>
+
+<!-- 	<ion-button expand="block" [routerDirection]="'forward'" [routerLink]="['/signin']">Login</ion-button> -->
+</ion-content>

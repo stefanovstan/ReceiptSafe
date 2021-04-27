@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      View Receipt
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="showContent">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">View Receipt</ion-title>
+      <ion-icon slot="primary" name="pencil-outline" (click)="editReceipt()"></ion-icon>
+      <ion-icon slot="primary" name="remove-circle-outline" (click)="deleteReceipt()"></ion-icon>
+    </ion-toolbar>
+  </ion-header>
+
+  <br>
+  <ion-label color="primary">Store Name</ion-label>
+  <p>{{ receipt.store_name }}</p>
+
+  <ion-label color="primary">Date</ion-label>
+  <p>{{ receipt.date }}</p>
+
+  <ion-label color="primary">Total Cost</ion-label>
+  <p>${{ receipt.total_cost }}</p>
+
+  <ion-label color="primary">Transcribed Receipt</ion-label>
+  <p>{{ receipt.transcribed_receipt }}</p>
+
+  <ion-label color="primary">Receipt Image</ion-label>
+  <br>
+  <br>
+  <ion-img [src]="receipt.photo_url"></ion-img>
+  <br>
+  <br>
+
+</ion-content>
