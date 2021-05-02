@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
 
 import { AuthService } from '../services/auth.service';
 
@@ -11,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+	
 	public loginForm: FormGroup;
 
 	constructor(public authService: AuthService) {

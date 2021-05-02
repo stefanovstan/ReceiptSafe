@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+	
 	public signupForm: FormGroup;
 
 	constructor(public authService: AuthService) {

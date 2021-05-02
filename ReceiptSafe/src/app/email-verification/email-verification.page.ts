@@ -5,11 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './email-verification.page.html',
   styleUrls: ['./email-verification.page.scss'],
 })
+
 export class EmailVerificationPage implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }
