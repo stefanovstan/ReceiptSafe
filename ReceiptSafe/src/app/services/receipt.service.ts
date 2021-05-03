@@ -126,4 +126,19 @@ export class ReceiptService {
 		}
 		return newReceipt;
 	}
+  
+  getFilteredReceipts(searchTerm: string): Observable<Receipt[]> {
+		if(searchTerm != null) {
+			var result = null;
+			var len = searchTerm.length;
+			var lastChar = searchTerm[len-1];
+
+    	console.log("SearchTerm is "+searchTerm+" and the photo_url is "+this.receipts)
+
+	  	result = this.receipts.pipe(map(receipts => receipts.filter(receipt => receipt.store_name[len-1] === searchTerm[len-1])))
+		  return result;
+	  } else {
+			this.getReceipts();
+		}
+	}
 }
