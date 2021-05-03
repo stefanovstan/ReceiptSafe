@@ -88,6 +88,17 @@ export class AuthService {
     });
   }
 
+  async deleteUser() {
+    var user = firebase.auth().currentUser;
+    await this.logout();
+    user.delete().then(function() {
+
+    }).catch(function(error) {
+
+    });
+    this.router.navigate(["tabs/tab1"]);
+  }
+
   getUserID() { return this.userid; }
 
   getUserType() { return this.usertype; }

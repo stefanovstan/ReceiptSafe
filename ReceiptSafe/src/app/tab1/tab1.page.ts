@@ -26,6 +26,8 @@ export class Tab1Page implements OnInit {
   ngOnInit(): void { }
 
   ionViewDidEnter() {
+    this.showLogIn = true;
+    console.log(this.authService.getUserID());
     if (this.authService.getUserID() != null) {
       this.pinned = this.receiptService.getPinned();
       this.receipts = this.receiptService.getUnpinned();
