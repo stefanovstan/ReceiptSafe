@@ -19,6 +19,7 @@ export class Tab1Page implements OnInit {
   userid = null;
   usertype = null;
   private receipts: Observable<Receipt[]>;
+  private pinned: Observable<Receipt[]>;
 
   constructor(private router: Router, public receiptService : ReceiptService, public fireAuth: AngularFireAuth, public authService: AuthService, private route : ActivatedRoute) { }
 
@@ -26,7 +27,8 @@ export class Tab1Page implements OnInit {
 
   ionViewDidEnter() {
     if (this.authService.getUserID() != null) {
-      this.receipts = this.receiptService.getReceipts();
+      this.pinned = this.receiptService.getPinned();
+      this.receipts = this.receiptService.getUnpinned();
       this.showLogIn = false;
     }
   }
@@ -36,7 +38,13 @@ export class Tab1Page implements OnInit {
   }
 
   pinReceipt(receipt) {
-    console.log("PINNED")
+    console.log("PINNED");
+    this.receiptService.pinReceipt(receipt);
+  }
+
+  unpinReceipt(receipt) {
+    console.log("UNPINNED");
+    this.receiptService.unpinReceipt(receipt);
   }
 
 }

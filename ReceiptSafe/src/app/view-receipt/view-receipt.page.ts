@@ -33,6 +33,7 @@ export class ViewReceiptPage implements OnInit {
         this.receipt = param
       }
     )
+    console.log(this.receipt.id);
   }
 
   ionViewDidEnter() {
