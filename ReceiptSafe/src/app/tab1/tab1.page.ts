@@ -8,6 +8,8 @@ import { AuthService } from '../services/auth.service';
 import { ReceiptService } from '../services/receipt.service';
 import { Receipt } from '../services/receipt.service';
 
+import { first } from 'rxjs/operators';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -47,6 +49,18 @@ export class Tab1Page implements OnInit {
   unpinReceipt(receipt) {
     console.log("UNPINNED");
     this.receiptService.unpinReceipt(receipt);
+  }
+  
+  async filterList(evt) {
+    const searchTerm = evt.srcElement.value;
+    console.log(searchTerm);
+
+    this.receipts = this.receiptService.getFilteredReceipts(searchTerm);
+    if(!searchTerm) {
+      return;
+    }
+
+    return this.receipts;
   }
 
 }
