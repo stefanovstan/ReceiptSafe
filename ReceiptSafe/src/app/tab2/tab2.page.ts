@@ -70,6 +70,9 @@ export class Tab2Page implements OnInit {
     await this.worker.initialize("eng");
     console.log("Finished")
     this.workerReady = true;
+    if (this.authService.getUserID() != null) {
+      this.scan()
+    }
   }
 
   async recognizeImage(imageURL) {
@@ -87,7 +90,9 @@ export class Tab2Page implements OnInit {
     if (this.authService.getUserID() == null) {
       // do nothing
     } else {
-      if (this.hideForm) { this.scan() }
+      if (this.hideForm && this.workerReady) {
+        this.scan()
+      }
     }
   }
 
