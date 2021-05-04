@@ -17,6 +17,7 @@ import { first } from 'rxjs/operators';
 })
 export class Tab1Page implements OnInit {
   showLogIn = true;
+  showSearch = false;
 
   userid = null;
   usertype = null;
@@ -34,6 +35,7 @@ export class Tab1Page implements OnInit {
       this.pinned = this.receiptService.getPinned();
       this.receipts = this.receiptService.getUnpinned();
       this.showLogIn = false;
+      this.showSearch = true;
     }
   }
 
@@ -50,7 +52,7 @@ export class Tab1Page implements OnInit {
     console.log("UNPINNED");
     this.receiptService.unpinReceipt(receipt);
   }
-  
+
   async filterList(evt) {
     const searchTerm = evt.srcElement.value;
     console.log(searchTerm);
