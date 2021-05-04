@@ -61,7 +61,13 @@ export class ReceiptService {
 	getPinned(): Observable<Receipt[]> {
 		var result = this.pinned.pipe(map(pinned => pinned.filter(receipt => receipt.user_uid === this.authService.getUserID())))
 	  	return result;
-  	}
+  }
+
+	getReceipts(): Observable<Receipt[]> {
+		var result = null;
+	  result = this.receipts.pipe(map(receipts => receipts.filter(receipt => receipt.user_uid === this.authService.getUserID())))
+		return result;
+	}
 
 	getReceipt(id: string): Observable<Receipt> {
 		let receipt = this.receiptCollection.doc<Receipt>(id).valueChanges().pipe(
@@ -108,7 +114,7 @@ export class ReceiptService {
 		this.deleteReceipt(receipt.id);
 		return this.pinnedCollection.add(newReceipt);
 	}
-	
+
 	unpinReceipt(receipt: Receipt) {
 		var newReceipt = this.duplicateReceipt(receipt);
 		this.addReceipt(newReceipt);
@@ -126,19 +132,19 @@ export class ReceiptService {
 		}
 		return newReceipt;
 	}
-  
+
   getFilteredReceipts(searchTerm: string): Observable<Receipt[]> {
-		if(searchTerm != null) {
+		if(searchTerm != "") {
 			var result = null;
 			var len = searchTerm.length;
 			var lastChar = searchTerm[len-1];
 
     	console.log("SearchTerm is "+searchTerm+" and the photo_url is "+this.receipts)
 
-	  	result = this.receipts.pipe(map(receipts => receipts.filter(receipt => receipt.store_name[len-1] === searchTerm[len-1])))
+	  	result = this.receipts.pipe(map(receipts => receipts.filter(receipt => receipt.store_name[len-1].toLowerCase() === searchTerm[len-1].toLowerCase())))
 		  return result;
 	  } else {
-			this.getReceipts();
+			return this.getReceipts();
 		}
 	}
 }
